@@ -62,6 +62,7 @@ body {
 /* Crop out AI-generated white padding on panel images */
 .comic-panel img {
   transform: scale(1.06);
+  transform-origin: center bottom; /* anchor bottom to preserve quote text, crop from top */
 }
 
 .comic-panel:hover {
