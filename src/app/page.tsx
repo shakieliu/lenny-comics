@@ -95,22 +95,21 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(el, {
+      gsap.set(el, { y: 40, opacity: 0, rotation: index % 2 === 0 ? -1.5 : 1.5 });
+      gsap.to(el, {
         scrollTrigger: {
           trigger: el,
           start: "top 92%",
-          toggleActions: "play none none none",
+          end: "top 70%",
+          toggleActions: "play none none reverse",
         },
-        y: 40,
-        opacity: 0,
-        rotation: index % 2 === 0 ? -1.5 : 1.5,
+        y: 0,
+        opacity: 1,
+        rotation: 0,
         duration: 0.6,
         delay: (index % 3) * 0.08,
         ease: "power2.out",
       });
-
-      // Ensure above-fold elements are visible
-      ScrollTrigger.refresh();
     });
 
     return () => ctx.revert();
@@ -119,14 +118,7 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
   return (
     <div ref={cardRef}>
       <Link href={`/comic/${comic.slug}`} className="block comic-card group">
-        <div className="comic-panel bg-white relative">
-          {/* Stacked card shadows */}
-          <div className="absolute inset-0 rounded border-2 transition-transform duration-300 -z-10"
-            style={{ borderColor: 'var(--border-soft)', background: 'var(--bg-cream-dark)', transform: 'rotate(2deg) translate(4px, 4px)' }}
-          />
-          <div className="absolute inset-0 rounded border-2 transition-transform duration-300 -z-20"
-            style={{ borderColor: 'var(--border-soft)', background: 'var(--bg-cream-dark)', transform: 'rotate(4deg) translate(8px, 8px)', opacity: 0.7 }}
-          />
+        <div className="comic-panel bg-white card-stack">
           <div className="relative aspect-square">
             {!imgLoaded && <div className="absolute inset-0 img-placeholder" />}
             <Image
@@ -154,20 +146,23 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
 
 /* ── Gallery Grid ── */
 function Gallery() {
-  const headerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = headerRef.current;
+    const el = sectionRef.current;
     if (!el) return;
     const ctx = gsap.context(() => {
-      gsap.from(el, {
+      // Header + stats: start invisible, toggle on scroll
+      gsap.set(".gallery-header", { y: 30, opacity: 0 });
+      gsap.to(".gallery-header", {
         scrollTrigger: {
           trigger: el,
-          start: "top 92%",
-          toggleActions: "play none none none",
+          start: "top 85%",
+          end: "top 60%",
+          toggleActions: "play none none reverse",
         },
-        y: 30,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         duration: 0.6,
         ease: "power2.out",
       });
@@ -176,8 +171,8 @@ function Gallery() {
   }, []);
 
   return (
-    <section id="gallery" className="max-w-7xl mx-auto px-6 py-16">
-      <div ref={headerRef} className="flex items-center justify-between mb-8">
+    <section ref={sectionRef} id="gallery" className="max-w-7xl mx-auto px-6 py-16">
+      <div className="gallery-header flex items-center justify-between mb-8">
         <h2 className="font-handwritten text-3xl md:text-4xl">All Comics</h2>
         <span className="text-sm px-3 py-1 rounded-full" style={{ background: 'var(--bg-cream-dark)', color: 'var(--text-secondary)' }}>
           {comics.length} comics · {comics.length * 4} panels

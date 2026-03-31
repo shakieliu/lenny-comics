@@ -188,12 +188,7 @@ export default function ComicDetail({ slug }: { slug: string }) {
                   />
                 </div>
               </div>
-              <p
-                className="mt-2 text-center text-xs font-medium"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Panel {num}
-              </p>
+
             </div>
           ))}
         </div>
