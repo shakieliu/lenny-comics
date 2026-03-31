@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { getComicBySlug, getAdjacentComics } from "@/lib/comics-data";
+import { getComicBySlug, getAdjacentComics, comics } from "@/lib/comics-data";
+import { useSwipe } from "@/hooks/use-swipe";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +20,27 @@ export default function ComicDetail({ slug }: { slug: string }) {
   const comic = getComicBySlug(slug);
   const { prev, next } = getAdjacentComics(slug);
   const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  // Swipe left → next comic, swipe right → previous comic
+  useSwipe({
+    onSwipeLeft: () => {
+      if (next) router.push(`/comic/${next.slug}`);
+    },
+    onSwipeRight: () => {
+      if (prev) router.push(`/comic/${prev.slug}`);
+    },
+  });
+
+  // Keyboard navigation: ← → arrow keys
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "ArrowLeft" && prev) router.push(`/comic/${prev.slug}`);
+      if (e.key === "ArrowRight" && next) router.push(`/comic/${next.slug}`);
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [prev, next, router]);
 
   useEffect(() => {
     if (!comic || !containerRef.current) return;
@@ -92,9 +115,9 @@ export default function ComicDetail({ slug }: { slug: string }) {
   const panelNumbers = Array.from({ length: comic.panels }, (_, i) => i + 1);
 
   return (
-    <main ref={containerRef} className="flex-1">
+    <main ref={containerRef} className="flex-1 animate-page-in">
       {/* Back nav */}
-      <nav className="max-w-5xl mx-auto px-6 pt-8">
+      <nav className="max-w-5xl mx-auto px-6 pt-8 flex items-center justify-between">
         <Link
           href="/"
           className="inline-flex items-center gap-1 text-sm hover:text-accent transition-colors"
@@ -102,6 +125,9 @@ export default function ComicDetail({ slug }: { slug: string }) {
         >
           ← Back to Gallery
         </Link>
+        <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
+          {comics.findIndex((c) => c.slug === slug) + 1} / {comics.length}
+        </span>
       </nav>
 
       {/* Quote hero */}
@@ -171,6 +197,11 @@ export default function ComicDetail({ slug }: { slug: string }) {
 
       {/* Prev / Next navigation */}
       <section className="max-w-5xl mx-auto px-6 py-12">
+        {/* Mobile swipe hint */}
+        <p className="text-center text-xs mb-6 md:hidden" style={{ color: "var(--text-muted)" }}>
+          ← Swipe to navigate →
+        </p>
+
         <div className="flex items-center justify-between gap-4">
           {prev ? (
             <Link
