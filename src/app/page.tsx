@@ -143,6 +143,12 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
 function Gallery() {
   return (
     <section id="gallery" className="max-w-7xl mx-auto px-6 py-16">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="font-handwritten text-3xl md:text-4xl">All Comics</h2>
+        <span className="text-sm px-3 py-1 rounded-full" style={{ background: 'var(--bg-cream-dark)', color: 'var(--text-secondary)' }}>
+          {comics.length} comics · {comics.length * 4} panels
+        </span>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {comics.map((comic, i) => (
           <ComicCard key={comic.comic_id} comic={comic} index={i} />
@@ -155,8 +161,8 @@ function Gallery() {
 /* ── Footer ── */
 function Footer() {
   return (
-    <footer className="py-12 text-center text-sm" style={{ color: 'var(--text-muted)' }}>
-      <p>
+    <footer className="py-12 text-center space-y-2" style={{ color: 'var(--text-muted)' }}>
+      <p className="text-sm">
         Made for the{" "}
         <a
           href="https://www.lennyspodcast.com/"
@@ -167,6 +173,9 @@ function Footer() {
           Lenny&apos;s Podcast
         </a>{" "}
         Comic Challenge 🎨
+      </p>
+      <p className="text-xs">
+        Use ← → arrow keys or swipe to navigate between comics
       </p>
     </footer>
   );
