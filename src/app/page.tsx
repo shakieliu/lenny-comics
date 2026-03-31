@@ -43,7 +43,7 @@ function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative flex flex-col items-center justify-center min-h-[70vh] px-6 text-center overflow-hidden"
+      className="relative flex flex-col items-center justify-center min-h-[80vh] px-6 text-center overflow-hidden"
     >
       {/* Subtle paper texture dots */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -115,8 +115,15 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
 
   return (
     <div ref={cardRef}>
-      <Link href={`/comic/${comic.slug}`} className="block comic-card">
-        <div className="comic-panel bg-white">
+      <Link href={`/comic/${comic.slug}`} className="block comic-card group">
+        <div className="comic-panel bg-white relative">
+          {/* Stacked card shadows */}
+          <div className="absolute inset-0 rounded border-2 transition-transform duration-300 -z-10"
+            style={{ borderColor: 'var(--border-soft)', background: 'var(--bg-cream-dark)', transform: 'rotate(2deg) translate(4px, 4px)' }}
+          />
+          <div className="absolute inset-0 rounded border-2 transition-transform duration-300 -z-20"
+            style={{ borderColor: 'var(--border-soft)', background: 'var(--bg-cream-dark)', transform: 'rotate(4deg) translate(8px, 8px)', opacity: 0.7 }}
+          />
           <div className="relative aspect-square">
             {!imgLoaded && <div className="absolute inset-0 img-placeholder" />}
             <Image
@@ -144,9 +151,30 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
 
 /* ── Gallery Grid ── */
 function Gallery() {
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const ctx = gsap.context(() => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 92%",
+          toggleActions: "play none none none",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="gallery" className="max-w-7xl mx-auto px-6 py-16">
-      <div className="flex items-center justify-between mb-8">
+      <div ref={headerRef} className="flex items-center justify-between mb-8">
         <h2 className="font-handwritten text-3xl md:text-4xl">All Comics</h2>
         <span className="text-sm px-3 py-1 rounded-full" style={{ background: 'var(--bg-cream-dark)', color: 'var(--text-secondary)' }}>
           {comics.length} comics · {comics.length * 4} panels

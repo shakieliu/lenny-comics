@@ -73,6 +73,15 @@ body {
   transform: scale(1.03) rotate(-0.5deg);
 }
 
+/* Stacked cards fan out on hover */
+.comic-card:hover .comic-panel > div.-z-10 {
+  transform: rotate(3.5deg) translate(6px, 6px) !important;
+}
+.comic-card:hover .comic-panel > div.-z-20 {
+  transform: rotate(7deg) translate(12px, 12px) !important;
+  opacity: 0.5 !important;
+}
+
 /* Quote highlight */
 .quote-highlight {
   position: relative;

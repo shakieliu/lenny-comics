@@ -159,27 +159,28 @@ export default function ComicDetail({ slug }: { slug: string }) {
 
       {/* Panels — scattered layout */}
       <section className="max-w-5xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="flex flex-col items-center">
           {panelNumbers.map((num, i) => (
             <div
               key={num}
-              className={`panel-item ${
-                i % 2 === 0 ? "md:translate-y-0" : "md:translate-y-8"
+              className={`panel-item w-full max-w-xl ${
+                i % 2 === 0 ? "md:self-start md:ml-[5%]" : "md:self-end md:mr-[5%]"
               }`}
+              style={{ marginTop: i === 0 ? 0 : "-2rem", zIndex: panelNumbers.length - i }}
             >
               <div
-                className="comic-panel bg-white"
+                className="comic-panel"
                 style={{
                   transform: `rotate(${i % 2 === 0 ? -1.5 : 1.5}deg)`,
                 }}
               >
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-square">
                   <Image
                     src={`/comics/${comic.comic_id}/panel_${num}.webp`}
                     alt={`${comic.comic_id} panel ${num}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-contain bg-white"
+                    className="object-cover"
                     priority={num <= 2}
                   />
                 </div>
