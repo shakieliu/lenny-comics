@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
@@ -88,6 +88,7 @@ function Hero() {
 /* ── Comic Card ── */
 function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -100,11 +101,11 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
           start: "top 92%",
           toggleActions: "play none none none",
         },
-        y: 50,
+        y: 40,
         opacity: 0,
-        rotation: index % 2 === 0 ? -2 : 2,
-        duration: 0.7,
-        delay: (index % 3) * 0.1,
+        rotation: index % 2 === 0 ? -1.5 : 1.5,
+        duration: 0.6,
+        delay: (index % 3) * 0.08,
         ease: "power2.out",
       });
     });
@@ -117,12 +118,14 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
       <Link href={`/comic/${comic.slug}`} className="block comic-card">
         <div className="comic-panel bg-white">
           <div className="relative aspect-square">
+            {!imgLoaded && <div className="absolute inset-0 img-placeholder" />}
             <Image
               src={comic.cover}
               alt={`${comic.comic_id} cover`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover"
+              className={`object-cover transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setImgLoaded(true)}
             />
           </div>
         </div>
