@@ -108,6 +108,9 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
         delay: (index % 3) * 0.08,
         ease: "power2.out",
       });
+
+      // Ensure above-fold elements are visible
+      ScrollTrigger.refresh();
     });
 
     return () => ctx.revert();

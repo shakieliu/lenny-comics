@@ -94,6 +94,9 @@ export default function ComicDetail({ slug }: { slug: string }) {
           });
         }
       });
+
+      // Refresh to catch above-fold elements
+      ScrollTrigger.refresh();
     }, containerRef);
 
     return () => ctx.revert();

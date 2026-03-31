@@ -59,6 +59,11 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Crop out AI-generated white padding on panel images */
+.comic-panel img {
+  transform: scale(1.06);
+}
+
 .comic-panel:hover {
   transform: translateY(-2px);
   box-shadow: 6px 6px 0px var(--shadow-warm);
