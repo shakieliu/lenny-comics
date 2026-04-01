@@ -419,6 +419,32 @@ export const comics: Comic[] = [
     theme: "Founder absorbs chaos so the team can stay calm",
     cover: "/comics/comic_31/panel_1.webp",
   },
+  {
+    comic_id: "comic_32",
+    slug: "comic-32",
+    quote: "If you care but don't give direct candid feedback — that's ruinous empathy.",
+    speaker: "Kim Scott",
+    episode_title: "Kim Scott on Radical Candor",
+    episode_file: "kim-scott.md",
+    youtube_url: "https://www.youtube.com/watch?v=gI0ZNhA0rvE",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Ruinous empathy — nice feedback kills careers",
+    cover: "/comics/comic_32/panel_1.webp",
+  },
+  {
+    comic_id: "comic_33",
+    slug: "comic-33",
+    quote: "We're logic systems, but we're also heart systems and body systems and soul systems.",
+    speaker: "Eoghan McCabe",
+    episode_title: "How Intercom rose from the ashes by betting everything on AI",
+    episode_file: "eoghan-mccabe.md",
+    youtube_url: "",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Humans are not just metrics — logic, heart, body, soul",
+    cover: "/comics/comic_33/panel_1.webp",
+  },
 ];
 
 export function getComicBySlug(slug: string): Comic | undefined {
