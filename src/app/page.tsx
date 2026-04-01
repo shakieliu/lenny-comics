@@ -154,28 +154,23 @@ function Gallery() {
     const el = sectionRef.current;
     if (!el) return;
     const ctx = gsap.context(() => {
-      // Header + stats: CSS already hides them (opacity:0, visibility:hidden)
-      gsap.set(".gallery-header", { y: 30, opacity: 0, visibility: "hidden" });
-      gsap.to(".gallery-header", {
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-          end: "top 60%",
-          toggleActions: "play none none reverse",
-          onUpdate: (self) => {
-            // Keep visibility synced: visible when progressing, hidden when fully reversed
-            if (self.progress > 0) {
-              gsap.set(".gallery-header", { visibility: "visible" });
-            } else {
-              gsap.set(".gallery-header", { visibility: "hidden" });
-            }
+      // Header starts hidden via inline style; GSAP reveals on scroll
+      gsap.fromTo(".gallery-header",
+        { y: 30, opacity: 0, visibility: "hidden" },
+        {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 65%",
+            end: "top 40%",
+            toggleActions: "play none none reverse",
           },
-        },
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-      });
+          y: 0,
+          opacity: 1,
+          visibility: "visible",
+          duration: 0.6,
+          ease: "power2.out",
+        }
+      );
     });
     return () => ctx.revert();
   }, []);
