@@ -367,6 +367,32 @@ export const comics: Comic[] = [
     theme: "Comfort zone is the danger zone — keep growing",
     cover: "/comics/comic_27/panel_1.webp",
   },
+  {
+    comic_id: "comic_28",
+    slug: "comic-28",
+    quote: "This is hard and I can do hard things.",
+    speaker: "Dr. Becky Kennedy",
+    episode_title: "A child psychologist's guide to working with difficult adults",
+    episode_file: "dr-becky-kennedy.md",
+    youtube_url: "https://www.youtube.com/watch?v=Auxs8ZsHRI4",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Resilience — embracing difficulty as a PM",
+    cover: "/comics/comic_28/panel_1.webp",
+  },
+  {
+    comic_id: "comic_29",
+    slug: "comic-29",
+    quote: "I really think there is not a single person on this planet who is even close to being at their maximum potential.",
+    speaker: "Tobi Lütke",
+    episode_title: "Tobi Lütke's leadership playbook",
+    episode_file: "tobi-lutke.md",
+    youtube_url: "https://www.youtube.com/watch?v=tq6vdDJQXvs",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Human potential — everyone has massive room to grow",
+    cover: "/comics/comic_29/panel_1.webp",
+  },
 ];
 
 export function getComicBySlug(slug: string): Comic | undefined {
