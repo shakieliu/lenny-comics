@@ -43,7 +43,7 @@ function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative flex flex-col items-center justify-center min-h-[80vh] px-6 text-center overflow-hidden"
+      className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center overflow-hidden"
     >
       {/* Subtle paper texture dots */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
