@@ -152,14 +152,16 @@ function Gallery() {
     const el = sectionRef.current;
     if (!el) return;
     const ctx = gsap.context(() => {
-      // Header + stats: start invisible, toggle on scroll
-      gsap.set(".gallery-header", { y: 30, opacity: 0 });
+      // Header + stats: start fully hidden (visibility:hidden prevents peeking)
+      gsap.set(".gallery-header", { y: 30, opacity: 0, visibility: "hidden" });
       gsap.to(".gallery-header", {
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
           end: "top 60%",
           toggleActions: "play none none reverse",
+          onEnter: () => gsap.set(".gallery-header", { visibility: "visible" }),
+          onLeaveBack: () => gsap.set(".gallery-header", { visibility: "hidden" }),
         },
         y: 0,
         opacity: 1,

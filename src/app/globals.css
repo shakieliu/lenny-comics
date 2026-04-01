@@ -158,6 +158,11 @@ body {
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
+/* Gallery header: hidden by default until scroll-triggered */
+.gallery-header {
+  will-change: transform, opacity;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
