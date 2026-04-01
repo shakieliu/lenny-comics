@@ -182,7 +182,7 @@ function Gallery() {
 
   return (
     <section ref={sectionRef} id="gallery" className="max-w-7xl mx-auto px-6 py-16">
-      <div className="gallery-header flex items-center justify-between mb-8">
+      <div className="gallery-header flex items-center justify-between mb-8" style={{ opacity: 0, visibility: 'hidden' as const }}>
         <h2 className="font-handwritten text-3xl md:text-4xl">All Comics</h2>
         <span className="text-sm px-3 py-1 rounded-full" style={{ background: 'var(--bg-cream-dark)', color: 'var(--text-secondary)' }}>
           {comics.length} comics · {comics.length * 4} panels
