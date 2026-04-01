@@ -118,17 +118,19 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
   return (
     <div ref={cardRef}>
       <Link href={`/comic/${comic.slug}`} className="block comic-card group">
-        <div className="comic-panel bg-white card-stack">
-          <div className="relative aspect-square">
-            {!imgLoaded && <div className="absolute inset-0 img-placeholder" />}
-            <Image
-              src={comic.cover}
-              alt={`${comic.comic_id} cover`}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className={`object-cover transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
-              onLoad={() => setImgLoaded(true)}
-            />
+        <div className="card-stack">
+          <div className="comic-panel bg-white">
+            <div className="relative aspect-square">
+              {!imgLoaded && <div className="absolute inset-0 img-placeholder" />}
+              <Image
+                src={comic.cover}
+                alt={`${comic.comic_id} cover`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className={`object-cover transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoad={() => setImgLoaded(true)}
+              />
+            </div>
           </div>
         </div>
         <div className="mt-3 px-1">
@@ -152,7 +154,7 @@ function Gallery() {
     const el = sectionRef.current;
     if (!el) return;
     const ctx = gsap.context(() => {
-      // Header + stats: start fully hidden (visibility:hidden prevents peeking)
+      // Header + stats: CSS already hides them (opacity:0, visibility:hidden)
       gsap.set(".gallery-header", { y: 30, opacity: 0, visibility: "hidden" });
       gsap.to(".gallery-header", {
         scrollTrigger: {
@@ -160,8 +162,14 @@ function Gallery() {
           start: "top 85%",
           end: "top 60%",
           toggleActions: "play none none reverse",
-          onEnter: () => gsap.set(".gallery-header", { visibility: "visible" }),
-          onLeaveBack: () => gsap.set(".gallery-header", { visibility: "hidden" }),
+          onUpdate: (self) => {
+            // Keep visibility synced: visible when progressing, hidden when fully reversed
+            if (self.progress > 0) {
+              gsap.set(".gallery-header", { visibility: "visible" });
+            } else {
+              gsap.set(".gallery-header", { visibility: "hidden" });
+            }
+          },
         },
         y: 0,
         opacity: 1,

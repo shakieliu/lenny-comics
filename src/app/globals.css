@@ -79,39 +79,45 @@ body {
   transform: scale(1.03) rotate(-0.5deg);
 }
 
-/* Stacked/fanned card deck effect */
+/* Stacked/fanned card deck effect — applied to wrapper OUTSIDE comic-panel
+   so overflow:hidden on .comic-panel doesn't clip the pseudo-elements */
 .card-stack {
   position: relative;
+  /* Ensure stacking context so z-index:-1 children stay behind */
+  isolation: isolate;
 }
 
 .card-stack::before,
 .card-stack::after {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -2px; /* slightly bigger than the card to peek out */
   border: 2px solid var(--border-soft);
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--bg-cream-dark);
   z-index: -1;
+  opacity: 0;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
 }
 
+/* Default: pseudo cards are hidden and stacked flat behind */
 .card-stack::before {
-  transform: rotate(1.5deg) translate(3px, 3px);
+  transform: rotate(0deg) translate(0px, 0px);
 }
 
 .card-stack::after {
-  transform: rotate(3deg) translate(6px, 6px);
-  opacity: 0.6;
+  transform: rotate(0deg) translate(0px, 0px);
 }
 
+/* On hover: fan out to reveal the "deck" of panels */
 .comic-card:hover .card-stack::before {
-  transform: rotate(3deg) translate(5px, 5px);
+  transform: rotate(2.5deg) translate(4px, 4px);
+  opacity: 0.7;
 }
 
 .comic-card:hover .card-stack::after {
-  transform: rotate(6deg) translate(10px, 10px);
-  opacity: 0.4;
+  transform: rotate(5deg) translate(8px, 8px);
+  opacity: 0.45;
 }
 
 /* Quote highlight */
@@ -158,8 +164,10 @@ body {
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
-/* Gallery header: hidden by default until scroll-triggered */
+/* Gallery header: hidden by CSS until GSAP scroll-trigger reveals it */
 .gallery-header {
+  opacity: 0;
+  visibility: hidden;
   will-change: transform, opacity;
 }
 
