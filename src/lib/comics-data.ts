@@ -393,6 +393,32 @@ export const comics: Comic[] = [
     theme: "Human potential — everyone has massive room to grow",
     cover: "/comics/comic_29/panel_1.webp",
   },
+  {
+    comic_id: "comic_30",
+    slug: "comic-30",
+    quote: "The best way to predict the future is to invent it.",
+    speaker: "Bret Taylor (citing Alan Kay)",
+    episode_title: "Bret Taylor on the future of careers, coding, agents, and more",
+    episode_file: "bret-taylor.md",
+    youtube_url: "https://www.youtube.com/watch?v=qImgGtnNbx0",
+    timestamp: "01:25:05",
+    panels: 4,
+    theme: "Predicting vs inventing — builders shape the future",
+    cover: "/comics/comic_30/panel_1.webp",
+  },
+  {
+    comic_id: "comic_31",
+    slug: "comic-31",
+    quote: "A founder is an uncertainty absorber.",
+    speaker: "Kunal Shah",
+    episode_title: "Kunal Shah on winning in India, second-order thinking, and more",
+    episode_file: "kunal-shah.md",
+    youtube_url: "https://www.youtube.com/watch?v=EgBOVDzUUAA",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Founder absorbs chaos so the team can stay calm",
+    cover: "/comics/comic_31/panel_1.webp",
+  },
 ];
 
 export function getComicBySlug(slug: string): Comic | undefined {
