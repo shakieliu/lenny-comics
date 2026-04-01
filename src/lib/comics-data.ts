@@ -341,6 +341,32 @@ export const comics: Comic[] = [
     theme: "Delegation and growth — letting go to level up",
     cover: "/comics/comic_25/panel_1.webp",
   },
+  {
+    comic_id: "comic_26",
+    slug: "comic-26",
+    quote: "Most execution problems are actually strategy problems in disguise.",
+    speaker: "Shreyas Doshi",
+    episode_title: "Shreyas Doshi on pre-mortems, the LNO framework, and more",
+    episode_file: "shreyas-doshi.md",
+    youtube_url: "https://www.youtube.com/watch?v=Iu4Kx1jMaWU",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Execution vs strategy — the hidden root cause",
+    cover: "/comics/comic_26/panel_1.webp",
+  },
+  {
+    comic_id: "comic_27",
+    slug: "comic-27",
+    quote: "If you ever find yourself in the comfort zone at work, you are definitely making a mistake.",
+    speaker: "Matt MacInnis",
+    episode_title: "Lessons from scaling Rippling",
+    episode_file: "matt-macinnis.md",
+    youtube_url: "https://www.youtube.com/watch?v=s848FaG8Cvs",
+    timestamp: "00:00:00",
+    panels: 4,
+    theme: "Comfort zone is the danger zone — keep growing",
+    cover: "/comics/comic_27/panel_1.webp",
+  },
 ];
 
 export function getComicBySlug(slug: string): Comic | undefined {
