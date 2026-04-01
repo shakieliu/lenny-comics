@@ -99,15 +99,15 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
       gsap.to(el, {
         scrollTrigger: {
           trigger: el,
-          start: "top 92%",
-          end: "top 70%",
+          start: "top 88%",
+          end: "top 65%",
           toggleActions: "play none none reverse",
         },
         y: 0,
         opacity: 1,
         rotation: 0,
         duration: 0.6,
-        delay: (index % 3) * 0.08,
+        delay: 0.15 + (index % 3) * 0.08,
         ease: "power2.out",
       });
     });
@@ -160,14 +160,14 @@ function Gallery() {
         {
           scrollTrigger: {
             trigger: el,
-            start: "top 65%",
-            end: "top 40%",
+            start: "top 92%",
+            end: "top 70%",
             toggleActions: "play none none reverse",
           },
           y: 0,
           opacity: 1,
           visibility: "visible",
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         }
       );
