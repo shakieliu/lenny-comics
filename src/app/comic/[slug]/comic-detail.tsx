@@ -123,6 +123,7 @@ export default function ComicDetail({ slug }: { slug: string }) {
       <nav className="max-w-5xl mx-auto px-6 pt-8 flex items-center justify-between">
         <Link
           href="/"
+          scroll={false}
           className="inline-flex items-center gap-1 text-sm hover:text-accent transition-colors"
           style={{ color: "var(--text-muted)" }}
         >
@@ -169,7 +170,7 @@ export default function ComicDetail({ slug }: { slug: string }) {
               className={`panel-item w-full max-w-xl ${
                 i % 2 === 0 ? "md:self-start md:ml-[5%]" : "md:self-end md:mr-[5%]"
               }`}
-              style={{ marginTop: i === 0 ? 0 : "-2rem", zIndex: panelNumbers.length - i }}
+              style={{ zIndex: panelNumbers.length - i }}
             >
               <div
                 className="comic-panel"

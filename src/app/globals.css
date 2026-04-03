@@ -171,6 +171,17 @@ body {
   will-change: transform, opacity;
 }
 
+/* Detail page panel spacing — breathe on mobile, overlap on desktop */
+.panel-item + .panel-item {
+  margin-top: 1.5rem;   /* mobile: generous spacing */
+}
+
+@media (min-width: 768px) {
+  .panel-item + .panel-item {
+    margin-top: -2rem;   /* desktop: overlapping scattered feel */
+  }
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;

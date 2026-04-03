@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
@@ -8,6 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { comics } from "@/lib/comics-data";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SCROLL_KEY = "gallery-scroll-y";
 
 /* ── Hero Section ── */
 function Hero() {
@@ -86,7 +88,7 @@ function Hero() {
 }
 
 /* ── Comic Card ── */
-function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number }) {
+function ComicCard({ comic, index, onNavigate }: { comic: typeof comics[0]; index: number; onNavigate: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -117,7 +119,7 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
 
   return (
     <div ref={cardRef}>
-      <Link href={`/comic/${comic.slug}`} className="block comic-card group">
+      <Link href={`/comic/${comic.slug}`} className="block comic-card group" onClick={onNavigate}>
         <div className="card-stack">
           <div className="comic-panel bg-white">
             <div className="relative aspect-square">
@@ -147,7 +149,7 @@ function ComicCard({ comic, index }: { comic: typeof comics[0]; index: number })
 }
 
 /* ── Gallery Grid ── */
-function Gallery() {
+function Gallery({ onCardClick }: { onCardClick: () => void }) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -185,7 +187,7 @@ function Gallery() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {comics.map((comic, i) => (
-          <ComicCard key={comic.comic_id} comic={comic} index={i} />
+          <ComicCard key={comic.comic_id} comic={comic} index={i} onNavigate={onCardClick} />
         ))}
       </div>
     </section>
@@ -217,10 +219,36 @@ function Footer() {
 
 /* ── Page ── */
 export default function Home() {
+  // Save scroll position before navigating to a comic detail page
+  const saveScrollPosition = useCallback(() => {
+    sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+  }, []);
+
+  // Restore scroll position when returning from comic detail
+  useEffect(() => {
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+    if (saved) {
+      const y = parseInt(saved, 10);
+      // Immediately scroll (before paint) so GSAP ScrollTriggers
+      // calculate positions correctly for already-visible cards
+      window.scrollTo(0, y);
+      // Refresh ScrollTrigger after scroll so it snaps visible cards
+      requestAnimationFrame(() => {
+        window.scrollTo(0, y);
+        ScrollTrigger.refresh();
+        // One more frame to handle any image-load layout shift
+        requestAnimationFrame(() => {
+          window.scrollTo(0, y);
+        });
+      });
+      sessionStorage.removeItem(SCROLL_KEY);
+    }
+  }, []);
+
   return (
     <main className="flex-1">
       <Hero />
-      <Gallery />
+      <Gallery onCardClick={saveScrollPosition} />
       <Footer />
     </main>
   );
