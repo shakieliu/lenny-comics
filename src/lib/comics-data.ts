@@ -19,14 +19,14 @@ export const comics: Comic[] = [
   {
     comic_id: "comic_1",
     slug: "comic-1",
-    quote: "Ship fast, iterate later.",
-    speaker: "Reid Hoffman",
+    quote: "People will perform enormous amounts of hyperrealistic work-like activities, and have no idea that that's what they're doing.",
+    speaker: "Stewart Butterfield",
     episode_title: "Slack founder: Mental models for building products people love ft. Stewart Butterfield",
     episode_file: "stewart-butterfield.md",
     youtube_url: "https://www.youtube.com/watch?v=kLe-zy5r0Mk",
-    timestamp: "00:00:14",
+    timestamp: "01:06:34",
     panels: 4,
-    theme: "Kitchen cooking metaphor — shipping products fast",
+    theme: "Office busywork — everyone looks productive but nothing ships",
     cover: "/comics/comic_1/panel_1.webp",
   },
   {
