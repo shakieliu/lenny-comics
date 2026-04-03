@@ -40,21 +40,24 @@
 
 ---
 
-## 🟠 C 级高置信度 — 无本地 transcript（7 组）
+## 🟠 C 级高置信度 — YouTube Transcript 实际验证（7 组）
 
-这些在 lenny-transcripts-full 里没有对应 transcript 文件，无法自动验证。Barnaby 通过 YouTube 定位。
+> 2026-04-04 更新：通过 YouTube 内置 transcript 逐个验证
 
 | Comic | Speaker | 时间戳 | 验证 | 说明 |
 |-------|---------|--------|------|------|
-| 14 | Dalton Caldwell | 00:04:48 | ❌ 无法验证 | 无 transcript 文件 |
-| 17 | Dalton Caldwell | 00:15:41 | ❌ 无法验证 | 无 transcript 文件 |
-| 18 | Tobi Lütke | 00:22:58 | ❌ 无法验证 | 无 transcript 文件 |
-| 21 | Nikita Bier | 00:51:05 | ❌ 无法验证 | 无 transcript 文件 |
-| 22 | Jason Fried | 00:13:55 | ❌ 无法验证 | 无 transcript 文件 |
-| 29 | Tobi Lütke | 00:08:49 | ❌ 无法验证 | 无 transcript 文件 |
-| 31 | Kunal Shah | 00:35:19 | ❌ 无法验证 | 无 transcript 文件 |
+| 14 | Dalton Caldwell | 00:04:48 | ✅ | YouTube transcript 5:11 处 Lenny 引用 "sell shit, make money"（Dalton 的话），±30s 内 |
+| 17 | Dalton Caldwell | 00:15:41 | ✅ | YouTube transcript 15:53 处 Dalton 说 "A good pivot is like going home. It's warmer, it's closer to something that you..." ±12s |
+| 18 | Tobi Lütke | 00:22:58 | ⚠️ | 实际金句在 **23:56** "Optimism always sounds dumb, or at least naive. Pessimism sounds extremely sophisticated." 偏差 58 秒，超出 ±30s。**建议改为 00:23:56** |
+| 21 | Nikita Bier | 00:51:05 | ✅ | YouTube transcript 51:22 处 Nikita 说 "products live and die in the pixels"，±25s 内 |
+| 22 | Jason Fried | 00:13:55 | ✅ | YouTube transcript 13:56 处 Lenny 引用 Jason 的话 "Small is not just a stepping stone, small is a great destination itself"，Jason 确认（"if I said it, I said it"）。偏差 1s |
+| 29 | Tobi Lütke | 00:08:49 | ✅ | YouTube transcript 8:48 处 Tobi 说 "I really think there is not a single person on this planet who is even close to being at their maximum potential" 偏差 1s |
+| 31 | Kunal Shah | 00:35:19 | ✅ | YouTube transcript 35:15-35:32 处 Kunal 说 "entrepreneurs are uncertainty absorbers for everybody" 精确匹配 |
 
-> 注: 这 7 个时间戳都不在 00:00:00 ~ 00:02:00 范围内，不太像预告段。但因为没有 transcript 做交叉验证，严格来说只能标记为无法验证。
+### C 级验证细节备注
+- **comic_14**: Speaker 注意 — transcript 中这句话是 **Lenny 在复述 Dalton 的话**（5:11 "how much of your message is just sell shit, make money"），Dalton 本人也在预告段 0:00 处说了。可接受。
+- **comic_18**: ⚠️ 时间戳偏差 58 秒。22:58 处 Tobi 说的是 "It sounds completely idiotic"，金句 "Pessimism sounds extremely sophisticated..." 实际在 23:56。建议修正。
+- **comic_22**: Speaker 注意 — transcript 中这句话是 Lenny 在引用 Jason 之前说过的话，Jason 当场确认是自己的话。可接受。
 
 ---
 
@@ -111,8 +114,7 @@
 
 | 状态 | 数量 | Comic IDs |
 |------|------|-----------|
-| ✅ 验证通过 | 21 | 2,3,4,5,6,7,8,9,10,11,12,15,19,20,23,25,27,28,30,32,33 |
-| ⚠️ 建议微调 | 3 | 13 (01:19:10→01:18:58), 16 (00:24:55→00:24:20), 24 (00:22:10→00:22:40) |
+| ✅ 验证通过 | 27 | 2,3,4,5,6,7,8,9,10,11,12,14,15,17,19,20,21,22,23,25,27,28,29,30,31,32,33 |
+| ⚠️ 建议微调 | 4 | 13 (01:19:10→01:18:58), 16 (00:24:55→00:24:20), 18 (00:22:58→00:23:56), 24 (00:22:10→00:22:40) |
 | ⚠️ 需要修正 | 1 | 26 (00:00:00→00:54:49) |
-| ❌ 需要替换金句 | 1 | 1 ("Ship fast, iterate later" 不存在于节目中) |
-| ❌ 无法验证 | 7 | 14,17,18,21,22,29,31 (无 transcript 文件) |
+| ✅ 已替换并验证 | 1 | 1 (新金句 "hyperrealistic work-like activities" at 01:06:34) |
