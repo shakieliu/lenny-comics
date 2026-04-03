@@ -1,0 +1,67 @@
+{
+  "comic_1": {
+    "timestamp": "00:00:00",
+    "confidence": "low",
+    "note": "Quote 'Ship fast, iterate later' NOT FOUND in the Stewart Butterfield episode (kLe-zy5r0Mk). Searched the full transcript — Reid Hoffman is never mentioned. This is likely a misattribution. 'Ship fast, iterate later' is a famous Reid Hoffman quote from his book 'Blitzscaling' and various talks, but it does NOT appear in this Lenny's Podcast episode. Reid Hoffman does not have his own Lenny's Podcast episode. Recommend either: (1) attributing to Reid Hoffman without a podcast link, (2) finding a different quote from this Stewart Butterfield episode, or (3) linking to a Reid Hoffman talk/interview where he says this."
+  },
+  "comic_13": {
+    "timestamp": "00:00:46",
+    "confidence": "medium",
+    "note": "Roger Martin says 'I have never met this mythical beast called a great natural strategist. Great strategists have all one thing in common, they just practice.' This appears at 00:00:46 in the teaser/preview section. In the main interview, this is the CLOSING remark — Lenny asks 'Is there anything else you wanted to just leave listeners with?' at 00:00:44 in the teaser. Based on the episode length (~50 min, 12638 words), this closing remark likely occurs around 00:48:00-00:50:00 in the full video. However, the exact main-interview timestamp could not be confirmed from the transcript (which only has teaser timestamps for this quote). Using teaser timestamp as fallback — recommend manual verification."
+  },
+  "comic_14": {
+    "timestamp": "00:04:48",
+    "confidence": "high",
+    "note": "Lenny says 'sell shit, make money' at 00:04:48 when introducing the themes from founders. Note: this is Lenny paraphrasing Dalton's advice, not Dalton saying these exact words. Dalton's related quote 'one of my mantras is just don't die' is at 00:06:33. The 'sell shit, make money' theme is discussed starting at 00:04:48 in the main interview."
+  },
+  "comic_16": {
+    "timestamp": "00:00:00",
+    "confidence": "low",
+    "note": "Quote 'Before the crisis, people felt I was too involved...' from Brian Chesky. The transcript excerpt I accessed covers the first ~8000 chars of the episode (up to ~00:06:00 of main interview). This specific quote about the crisis was NOT found in the portion accessed. The episode (4ef0juAMqoE) discusses Brian's management style extensively. The quote likely appears later in the episode when discussing how he took more control during COVID/crisis. Based on the episode topic about getting into details and his management approach, estimate 00:20:00-00:40:00 range. Recommend manual verification by watching the video."
+  },
+  "comic_17": {
+    "timestamp": "00:15:41",
+    "confidence": "high",
+    "note": "Dalton Caldwell says 'A good pivot is like going home' at 00:15:41 in the main interview, in context of discussing the Brex/Retool pivot stories. The same quote appears at 00:00:36 in the teaser. Use 00:15:41 for the main interview timestamp."
+  },
+  "comic_18": {
+    "timestamp": "00:22:58",
+    "confidence": "high",
+    "note": "Tobi Lütke says 'Pessimism sounds extremely sophisticated. Optimism always sounds dumb or at least naive.' at 00:22:58 in the main interview, during a discussion about the aesthetics of business and unquantifiable things. The same quote appears at 00:00:34 in the teaser. Use 00:22:58 for the main interview timestamp."
+  },
+  "comic_21": {
+    "timestamp": "00:51:05",
+    "confidence": "high",
+    "note": "Nikita Bier says 'products live and die in the pixels' at 00:51:05 in the main interview, during a discussion about the role of product managers at large companies vs startups. The same quote appears at 00:00:59 in the teaser. Use 00:51:05 for the main interview timestamp."
+  },
+  "comic_22": {
+    "timestamp": "00:13:55",
+    "confidence": "high",
+    "note": "Lenny quotes Jason Fried at 00:13:55: 'Small is not just a stepping stone, small is a great destination itself.' This is Lenny reading back Jason's quote to him during the discussion about staying small vs growing big. Jason then responds. Note: this is from the Lenny's Podcast episode with Jason Fried (dAnF0tk0di8), and it's Lenny quoting Jason's earlier writing/tweets back to him."
+  },
+  "comic_24": {
+    "timestamp": "00:22:10",
+    "confidence": "high",
+    "note": "April Dunford discusses the 'no decision' problem at 00:22:10: 'in B2B we lose about 40% of our deals to quote-unquote no decision.' She elaborates further at 00:35:08: 'And 40% of the time that's what happened' in the context of customers who can't figure out how to choose. The 00:22:10 timestamp is where the concept is first introduced. Note: The YouTube URL given (hdjlCLb9Hl8) may be a DIFFERENT April Dunford episode — the transcript I found is from an earlier episode. Recommend verifying the URL matches."
+  },
+  "comic_26": {
+    "timestamp": "00:00:48",
+    "confidence": "low",
+    "note": "Shreyas Doshi quote 'Most execution problems are actually strategy problems' — Lenny mentions this in the intro at 00:00:48. The YouTube video (Iu4Kx1jMaWU) is Shreyas's FIRST episode. The full transcript shows this is discussed as one of the '5 big ideas' but the exact timestamp for when Shreyas says these words in the main interview could not be pinpointed from the transcript text (the transcript I accessed didn't reach deep enough into the episode for this specific section, which is likely idea #4 or #5 discussed around 00:40:00-00:55:00). Recommend manual verification."
+  },
+  "comic_29": {
+    "timestamp": "00:08:49",
+    "confidence": "high",
+    "note": "Tobi Lütke says 'I really, really, really think that there is not a single person on this planet who is even close to being at their maximum potential' at 00:08:49 in the main interview. Same quote in teaser at 00:01:37. Use 00:08:49 for the main interview timestamp."
+  },
+  "comic_31": {
+    "timestamp": "00:35:19",
+    "confidence": "high",
+    "note": "Kunal Shah says 'entrepreneurs are uncertainty absorbers for everybody — for employees, for investors, for customers — and therefore they get rewarded for being those people who remove uncertainty from people's lives' at 00:35:19 in the main interview. Note: the exact phrasing used in the comic ('A founder is an uncertainty absorber') is a condensed version of what Kunal actually says."
+  },
+  "comic_32": {
+    "timestamp": "00:05:48",
+    "confidence": "medium",
+    "note": "Kim Scott explains ruinous empathy at 00:05:48: 'we're so worried about not hurting someone's feelings... that we fail to tell them something they'd be better off knowing in the long run. And that is what I call ruinous empathy.' IMPORTANT: The YouTube URL given (gI0ZNhA0rvE) may be a DIFFERENT Kim Scott episode than the one I found the transcript for (V7tnbx-6Ayc). The transcript I accessed is for 'Radical Candor: From theory to practice' (V7tnbx-6Ayc). If gI0ZNhA0rvE is a different episode, this timestamp may not match. Recommend verifying which episode the URL points to."
+  }
+}
